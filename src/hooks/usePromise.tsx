@@ -30,7 +30,7 @@ export function usePromise<T>(promiseCallback: PromiseCallback<T>) {
 
   useEffect(() => {
     promiseRef.current = promiseCallback
-  }, [])
+  }, [promiseCallback])
 
   return {
     resolve,
