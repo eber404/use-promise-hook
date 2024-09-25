@@ -18,6 +18,7 @@ export function usePromise<T>(promiseCallback: PromiseCallback<T>) {
   const resolve = useCallback(async () => {
     try {
       if (!promiseRef.current) return
+      setData(undefined)
       setStatus('pending')
       const data = await promiseRef.current()
       setStatus('resolved')
