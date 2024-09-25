@@ -18,11 +18,11 @@ export function usePromise<T>(promiseCallback: PromiseCallback<T>) {
   const resolve = useCallback(async () => {
     try {
       if (!promiseRef.current) return
-      setData(undefined)
       setStatus('pending')
+      setData(undefined)
       const data = await promiseRef.current()
-      setStatus('resolved')
       setData(data)
+      setStatus('resolved')
     } catch (error: any) {
       setError(String(error?.message ?? error))
       setStatus('rejected')
